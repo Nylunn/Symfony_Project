@@ -10,6 +10,9 @@ security:
         class: App\Entity\User
         property: email
   firewalls:
+    secured_area:
+      form_login:
+        enable_csrf: true
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
       security: false
@@ -21,7 +24,8 @@ security:
         path: app_logout
         # where to redirect after logout
         # target: app_any_route
-
+      json_login:
+        check_path: api_login
       remember_me:
         secret: "%kernel.secret%"
         lifetime: 604800
